@@ -1,2 +1,8 @@
+import {Excell} from "@/components/excell/Excell";
 import './scss/index.scss'
-console.log('Working!!!')
+
+const excell = new Excell('#app', {
+  components: []
+})
+
+console.log('Excell', excell)
