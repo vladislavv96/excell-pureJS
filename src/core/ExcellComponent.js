@@ -1,7 +1,7 @@
-import {DOMListener} from "@core/DOMListener";
+import {DOMListener} from '@core/DOMListener';
 
 export class ExcellComponent extends DOMListener {
-  //Возвращает шаблон компонента
+  //  Возвращает шаблон компонента
   toHTML() {
     return ''
   }
