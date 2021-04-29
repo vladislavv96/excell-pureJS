@@ -2,6 +2,12 @@ import {ExcellComponent} from '@core/ExcellComponent';
 
 export class Toolbar extends ExcellComponent {
   static className = 'excell__toolbar'
+  constructor($root) {
+    super($root, {
+      name: 'Toolbar',
+      listeners: ['click'],
+    });
+  }
   toHTML() {
     return `
     <div class="button">
@@ -27,5 +33,8 @@ export class Toolbar extends ExcellComponent {
                 </i>
             </div>
     `
+  }
+  onClick(event) {
+    console.log(event.target)
   }
 }

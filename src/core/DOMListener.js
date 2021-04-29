@@ -14,7 +14,8 @@ export class DOMListener {
         const name = this.name || ''
         throw new Error(`No implementation of ${method} in ${name} Component`)
       }
-      this.$root.on(listener, this[method].bind(this))
+      this[method] = this[method].bind(this)
+      this.$root.on(listener, this[method])
     })
   }
 

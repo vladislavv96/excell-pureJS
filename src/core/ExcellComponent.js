@@ -13,4 +13,7 @@ export class ExcellComponent extends DOMListener {
   init() {
     this.initDOMListeners();
   }
+  destroy() {
+    this.removeDOMListeners();
+  }
 }
