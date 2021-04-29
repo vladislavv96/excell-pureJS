@@ -1,3 +1,5 @@
+import {capitalize} from '@core/utils';
+
 export class DOMListener {
   constructor($root, listeners = []) {
     if (!$root) throw new Error(`No root provided for DOMListener`)
@@ -6,10 +8,24 @@ export class DOMListener {
   }
 
   initDOMListeners() {
-    console.log(this.listeners)
+    this.listeners.forEach((listener) =>{
+      const method = getMethodName(listener)
+      if (!this[method]) {
+        const name = this.name || ''
+        throw new Error(`No implementation of ${method} in ${name} Component`)
+      }
+      this.$root.on(listener, this[method].bind(this))
+    })
   }
 
   removeDOMListeners() {
-
+    this.listeners.forEach((listener) =>{
+      const method = getMethodName(listener)
+      this.$root.off(listener, this[method])
+    })
   }
+}
+
+function getMethodName(eventName) {
+  return 'on' + capitalize(eventName)
 }
